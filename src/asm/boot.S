@@ -46,13 +46,11 @@ _start:
 	li		t3, (1 << 3) | (1 << 7) | (1 << 11)
 	csrw	mie, t3
 	# Park thread after rust code finishes
-	la		ra, 4f
+	la		ra, 3f
 	# Boot into rust
 	mret
 
 # Parked threads go here
 3:
-
-4:
 	wfi
-	j	4b
+	j	3b
